@@ -47,3 +47,5 @@ This Django-based REST API allows users to view a list of movies with support fo
    python manage.py runserver
     ```
 
+### Postman Collection
+- **Collection File:** [postman-collection.json](./postman_collection.json)
