@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "d9af6191-d73f-43db-b6f2-b93ccd6305c9",
+		"name": "DailyRoundAssignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32246931"
+	},
+	"item": [
+		{
+			"name": "upload data",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/Users/lokal/Downloads/movies_data_assignment.csv"
+						}
+					]
+				},
+				"url": "localhost:8000/movies/bulk_create/"
+			},
+			"response": []
+		},
+		{
+			"name": "pagination",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/movies/?page=1&release_date=2017-06-09&original_language=fr",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "ordering",
+							"value": "-release_date",
+							"disabled": true
+						},
+						{
+							"key": "ordering",
+							"value": "-rating",
+							"disabled": true
+						},
+						{
+							"key": "release_date",
+							"value": "2017-06-09"
+						},
+						{
+							"key": "original_language",
+							"value": "fr"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sorting",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/movies/?page=1&ordering=-release_date&ordering=-rating",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"movies",
+						""
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "ordering",
+							"value": "-release_date"
+						},
+						{
+							"key": "ordering",
+							"value": "-rating"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
