@@ -13,13 +13,19 @@ from content.models import Movie, ProductionCompany, Genre, Language
 from content.serializers import MovieSerializer, CSVUploadSerializer
 
 
+class CustomPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'  # Allow the client to override the page size
+    max_page_size = 100
+
+
 class MovieViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
     queryset = Movie.objects.all()
     serializer_class = MovieSerializer
     filter_backends = [DjangoFilterBackend, OrderingFilter]
     filterset_fields = ['release_date', 'original_language']
-    ordering_fields = ['release_date', 'stats__vote_average']
-    pagination_class = PageNumberPagination
+    ordering_fields = ['release_date', 'rating']
+    pagination_class = CustomPagination
 
     @action(methods=["POST"], detail=False)
     def bulk_create(self, request: Request, *args, **kwargs):
